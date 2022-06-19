@@ -1,0 +1,11 @@
+stages:
+  load_data:
+    cmd: python src/load_and_save.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/load_and_save.py
+    - data_given_by_client/thyroidDF.csv
+    outs:
+    - data/raw/thyroidDF.csv
+
+    

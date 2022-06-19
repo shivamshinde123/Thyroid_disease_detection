@@ -1,0 +1,5 @@
+
+
+data_location:
+  data_given_by_client: data_given_by_client/thyroidDF.csv
+  raw_data: data/raw/thyroidDF.csv
