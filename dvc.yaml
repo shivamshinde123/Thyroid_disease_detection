@@ -7,5 +7,9 @@ stages:
     - data_given_by_client/thyroidDF.csv
     outs:
     - data/raw/thyroidDF.csv
-
-    
+  data_validation:
+    cmd: python src/raw_data_validation.py
+    deps:
+    - src/raw_data_validation.py
+    - src/get_data.py
+    - data/raw/thyroidDF.csv
