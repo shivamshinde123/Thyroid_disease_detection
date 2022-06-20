@@ -13,3 +13,20 @@ stages:
     - src/raw_data_validation.py
     - src/get_data.py
     - data/raw/thyroidDF.csv
+  data_preprocess1:
+    cmd: python src/data_preprocessing_part1.py
+    deps:
+    - src/data_preprocessing_part1.py
+    - src/get_data.py
+    - data/raw/thyroidDF.csv
+    outs:
+    - data/processed/thyroidDF.csv
+  data_preprocess2_and_model_training:
+    cmd: python src/data_preprocessing_part2_and_model_training.py --config=params.yaml
+    deps: 
+    - src/data_preprocessing_part2_and_model_training.py
+    - src/get_data.py
+    - data/processed/thyroidDF.csv
+    outs:
+    - models/model.joblib
+    - reports/metrics.json
