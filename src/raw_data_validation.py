@@ -6,10 +6,6 @@ from get_data import read_params
 import pandas as pd
 import numpy as np
 
-## 1. data type validation
-## 2. number of columns validation
-## 3. name of columns validation
-
 
 class Dictvalidator(BaseModel):
 

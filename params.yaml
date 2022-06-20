@@ -1,5 +1,17 @@
+General:
+  list_of_columns_to_remove:
+  - patient_id 
+  - TSH_measured 
+  - T3_measured 
+  - TT4_measured 
+  - T4U_measured
+  - FTI_measured 
+  - TBG_measured 
 
 
 data_location:
   data_given_by_client: data_given_by_client/thyroidDF.csv
   raw_data: data/raw/thyroidDF.csv
+  data_after_preprocess_part1: data/interim/thyroidDF.csv
+
+
