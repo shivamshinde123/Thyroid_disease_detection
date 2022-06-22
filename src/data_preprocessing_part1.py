@@ -17,11 +17,14 @@ def remove_unneccessary_columns(lst):
 
     config = read_params(config_path)
     raw_data = config['data_location']['raw_data']
+    interim1_data = config['data_location']['interim1_data']
 
     df = pd.read_csv(raw_data)
 
     for feature in lst:
         df.drop(feature, axis=1, inplace=True)
+
+    df.to_csv(interim1_data, index=False, sep=',')
 
 
 def converting_illogical_ages_to_null():
@@ -34,11 +37,15 @@ def converting_illogical_ages_to_null():
     """
 
     config = read_params(config_path)
-    raw_data = config['data_location']['raw_data']
+    interim1_data = config['data_location']['interim1_data']
+    interim2_data = config['data_location']['interim2_data']
 
-    df = pd.read_csv(raw_data)
+    df = pd.read_csv(interim1_data)
 
-    df['age'] = np.where((df['age']>100 or df['age']<0), np.nan, df['age'])
+    df['age'] = np.where(df['age']>100, np.nan, df['age'])
+    df['age'] = np.where(df['age']<0, np.nan, df['age'])
+
+    df.to_csv(interim2_data, index=False, sep=',')
 
 def replacing_dash_with_others_in_target_column():
 
@@ -51,16 +58,14 @@ def replacing_dash_with_others_in_target_column():
     """
 
     config = read_params(config_path)
-    data_after_preprocess_part1 = config['data_location']['data_after_preprocess_part1']
+    interim2_data = config['data_location']['interim2_data']
+    processed_data = config['data_location']['processed_data']
 
-    df = pd.read_csv(data_after_preprocess_part1)
+    df = pd.read_csv(interim2_data)
 
     df['target'] = np.where(df['target'] == '-', 'Others',df['target'])
-
-    data_after_preprocess_part1 = config['data_location']['data_after_preprocess_part1']
     
-    df.to_csv(data_after_preprocess_part1, index=False, sep=',')
-
+    df.to_csv(processed_data, index=False, sep=',')
 
 
 if __name__ == '__main__':

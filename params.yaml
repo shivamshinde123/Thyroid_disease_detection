@@ -14,7 +14,10 @@ General:
 data_location:
   data_given_by_client: data_given_by_client/thyroidDF.csv
   raw_data: data/raw/thyroidDF.csv
-  data_after_preprocess_part1: data/processed/thyroidDF.csv
+  interim1_data: data/interim1/thyroidDF.csv                  ## data after removing unnecessary columns
+  interim2_data: data/interim2/thyroidDF.csv                  ## data after fixing illogical ages
+  processed_data: data/processed/thyroidDF.csv                ## data after replacing dash from target column with Others
+  
 
 model:
   model_foldername: models

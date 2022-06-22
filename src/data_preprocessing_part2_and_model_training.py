@@ -1,12 +1,13 @@
 
 import argparse
-from sklearn.metrics import classification_report, roc_auc_score, accuracy_score
+from sklearn.metrics import balanced_accuracy_score, f1_score, precision_score, recall_score
 from get_data import read_params
 import pandas as pd
 import numpy as np
 import json
 import os
 import joblib
+import pickle
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder
@@ -14,8 +15,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from xgboost import XGBClassifier
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import StratifiedKFold
 
 
 def model_training(config_path):
@@ -39,7 +38,7 @@ def model_training(config_path):
     """
 
     config = read_params(config_path)
-    data = config['data_location']['data_after_preprocess_part1']
+    data = config['data_location']['processed_data']
 
     df = pd.read_csv(data)
 
@@ -80,6 +79,8 @@ def model_training(config_path):
         ('cat_pipeline',cat_pipe,cat_cols)
     ], remainder='passthrough')
 
+    
+
     ## 4. Creating a pipeline for model training
     xgboost_pipe = Pipeline([
     ('xgboost', XGBClassifier(max_depth=2))
@@ -95,21 +96,25 @@ def model_training(config_path):
     ## 6. Fitting the model on train data
     xgbc = xgboost_pipe.fit(train_X, train_y)
 
-    ## 7. Predicting metrics using the trained model and the test data
+    with open(os.path.join('preprocess_pipeline', 'preprocess_pipeline.pkl'), 'wb') as pickle_file:
+        pickle.dump(preprocess_pipe, pickle_file)
 
-    roc_auc_scr = roc_auc_score(test_y, xgbc.predict_proba(test_X)[:,1])
-    classification_rpt = classification_report(test_y, xgbc.predict(test_X), target_names=train_X.unique(),output_dict=True)
+    ## 7. Predicting metrics using the trained model and the test data
+    balanced_accuracy_scr = balanced_accuracy_score(test_y, xgbc.predict(test_X))
+    p_scr = precision_score(test_y, xgbc.predict(test_X),average='weighted')
+    r_scr = recall_score(test_y, xgbc.predict(test_X),average='weighted')
+    f1_scr = f1_score(test_y, xgbc.predict(test_X),average='weighted')
 
     ## 8. Saving the calculated metrics into a json file in the reports folder
 
     with open('reports/metrics.json','w') as json_file:
+        balanced_accuracy = dict()
+        balanced_accuracy['balanced_accuracy_score'] = balanced_accuracy_scr
+        balanced_accuracy['precision_score'] = p_scr
+        balanced_accuracy['recall_score'] = r_scr
+        balanced_accuracy['f1_score'] = f1_scr
 
-        json.dump(classification_rpt, json_file, indent=4)
-
-        roc_auc = dict()
-        roc_auc['roc_auc_score'] = roc_auc_scr
-
-        json.dump(roc_auc, json_file, indent=4)
+        json.dump(balanced_accuracy, json_file, indent=4)
 
     ## 9. Saving the model in the models folder
 

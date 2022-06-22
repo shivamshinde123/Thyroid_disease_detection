@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Credit-card-fraud-detection
+{% endblock title %}
+
+
+{% block custom_css %}
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock custom_css %}
+
+
+{% block body %}
+<!-- nav bar -->
+
+<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="/">ThyroidDiseaseDetection</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/shivamshinde123/Thyroid_disease_detection">source code</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div><br>
+    <!-- nav bar ends -->
+
+    <div class="container mt-5">
+        <strong>Project Overview:</strong>
+        <ul>
+            <li>Digital payments are evolving, but so are cyber criminals.</li>
+            <li>According to the Data Breach Index, more than 5 million records are being stolen on a daily basis, a concerning statistic that shows - fraud is still very common both for Card-Present and Card-not Present type of payments.</li>
+            <li>In this digital world where trillions of Card transaction happens per day, detection of fraud is challenging.</li>
+            <li>This project aims to detect such frauds given some of the features of performed transaction. The info about these features is given below.</li>
+        </ul>
+    </div><br>
+    <div class="container">
+        <strong>Feature Explanation:</strong><br>
+        <ul>
+            <li>distance from home - the distance from home where the transaction happened.</li>
+            <li>distance from last transaction - the distance from last transaction happened.</li>
+            <li>ratio to median purchase price - Ratio of purchased price transaction to median purchase price.</li>
+            <li>repeat retailer - Is the transaction happened from same retailer (1 for yes and 0 for no)</li>
+            <li>used chip - Is the transaction through chip (credit card) (1 for yes and 0 for no)</li>
+            <li>used pin number - Is the transaction happened by using PIN number (1 for yes and 0 for no)</li>
+            <li>online order - Is the transaction an online order (1 for yes and 0 for no)</li>
+            <li>fraud (Prediction) - Is the transaction fraudulent (1 for yes and 0 for no)</li>
+        </ul>
+    </div>
+
+    <div class="container-fluid masthead">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form method="POST">
+                        <!-- Input block-->
+                        <div class="form-group">
+                            <label for="translation">
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Enter the details as indicated:</p>
+                                </blockquote>
+                            </label>
+                            <textarea class="form-control" name="distance_from_home" rows="1"
+                                placeholder="distance from home"></textarea>
+                            <textarea class="form-control" name="distance_from_last_transaction" rows="1"
+                                placeholder="distance from last transaction"></textarea>
+                            <textarea class="form-control" name="ratio_to_median_purchase_price" rows="1"
+                                placeholder="ratio to median purchase price"></textarea>
+                            <textarea class="form-control" name="repeat_retailer" rows="1"
+                                placeholder="repeat retailer: should be either o or 1"></textarea>
+                            <textarea class="form-control" name="used_chip" rows="1"
+                                placeholder="used chip: should be either o or 1"></textarea>
+                            <textarea class="form-control" name="used_pin_number" rows="1"
+                                placeholder="used pin number: should be either o or 1"></textarea>
+                            <textarea class="form-control" name="online_order" rows="1"
+                                placeholder="online order: should be either 0 or 1"></textarea>
+                            
+
+                        </div>
+
+                        <!-- Select output language here. -->
+                        <div class="form-group">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Predict</button></br>
+                        </br>
+                    </form>
+                    <!-- Translated text returned by the Translate API is rendered here. -->
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="form-group">
+                            <label for="translation-result">
+
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Prediction:</p>
+                                </blockquote>
+
+                            </label>
+                            <textarea readonly class="form-control" id="exTextarea" rows="5">{{ prediction }}</textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+            
+        </div>
+
+        {% endblock body %}
+
+        {% block custom_js %}
+        <!-- Custom JS -->
+        <script src="{{ url_for('static', filename='script/index.js') }}"></script>
+        {% endblock custom_js %}
