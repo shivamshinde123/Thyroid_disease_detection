@@ -8,7 +8,7 @@ General:
   - FTI_measured 
   - TBG_measured 
   random_state: 123
-  test_size: 0.3
+  test_size: 0.1
 
 
 data_location:
@@ -17,9 +17,14 @@ data_location:
   interim1_data: data/interim1/thyroidDF.csv                  ## data after removing unnecessary columns
   interim2_data: data/interim2/thyroidDF.csv                  ## data after fixing illogical ages
   processed_data: data/processed/thyroidDF.csv                ## data after replacing dash from target column with Others
+  processed_data_final_foldername: data/processed_final    ## data after doing missing value imputation and categorical value encoding
+  processed_data_final_filename: thyroidDF.csv
   
 
 model:
   model_foldername: models
   model_name: model.joblib
 
+preprocess:
+  preprocess_pipe_foldername: preprocess_pipeline
+  preprocess_pipe_filename: preprocess_pipeline.pkl

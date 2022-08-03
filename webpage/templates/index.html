@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Credit-card-fraud-detection
+Thyroid Disease Detection
 {% endblock title %}
 
 
@@ -14,7 +14,7 @@ Credit-card-fraud-detection
 {% block body %}
 <!-- nav bar -->
 
-<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #d9eee1;">
     <a class="navbar-brand" href="/">ThyroidDiseaseDetection</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,30 +33,6 @@ Credit-card-fraud-detection
 </nav>
 <div><br>
     <!-- nav bar ends -->
-
-    <div class="container mt-5">
-        <strong>Project Overview:</strong>
-        <ul>
-            <li>Digital payments are evolving, but so are cyber criminals.</li>
-            <li>According to the Data Breach Index, more than 5 million records are being stolen on a daily basis, a concerning statistic that shows - fraud is still very common both for Card-Present and Card-not Present type of payments.</li>
-            <li>In this digital world where trillions of Card transaction happens per day, detection of fraud is challenging.</li>
-            <li>This project aims to detect such frauds given some of the features of performed transaction. The info about these features is given below.</li>
-        </ul>
-    </div><br>
-    <div class="container">
-        <strong>Feature Explanation:</strong><br>
-        <ul>
-            <li>distance from home - the distance from home where the transaction happened.</li>
-            <li>distance from last transaction - the distance from last transaction happened.</li>
-            <li>ratio to median purchase price - Ratio of purchased price transaction to median purchase price.</li>
-            <li>repeat retailer - Is the transaction happened from same retailer (1 for yes and 0 for no)</li>
-            <li>used chip - Is the transaction through chip (credit card) (1 for yes and 0 for no)</li>
-            <li>used pin number - Is the transaction happened by using PIN number (1 for yes and 0 for no)</li>
-            <li>online order - Is the transaction an online order (1 for yes and 0 for no)</li>
-            <li>fraud (Prediction) - Is the transaction fraudulent (1 for yes and 0 for no)</li>
-        </ul>
-    </div>
-
     <div class="container-fluid masthead">
         <br>
         <br>
@@ -73,22 +49,104 @@ Credit-card-fraud-detection
                                     <p class="mb-2">Enter the details as indicated:</p>
                                 </blockquote>
                             </label>
-                            <textarea class="form-control" name="distance_from_home" rows="1"
-                                placeholder="distance from home"></textarea>
-                            <textarea class="form-control" name="distance_from_last_transaction" rows="1"
-                                placeholder="distance from last transaction"></textarea>
-                            <textarea class="form-control" name="ratio_to_median_purchase_price" rows="1"
-                                placeholder="ratio to median purchase price"></textarea>
-                            <textarea class="form-control" name="repeat_retailer" rows="1"
-                                placeholder="repeat retailer: should be either o or 1"></textarea>
-                            <textarea class="form-control" name="used_chip" rows="1"
-                                placeholder="used chip: should be either o or 1"></textarea>
-                            <textarea class="form-control" name="used_pin_number" rows="1"
-                                placeholder="used pin number: should be either o or 1"></textarea>
-                            <textarea class="form-control" name="online_order" rows="1"
-                                placeholder="online order: should be either 0 or 1"></textarea>
-                            
-
+                            <textarea class="form-control" name="age" rows="1"
+                                placeholder="age: should be between 0 and 100"></textarea>
+                            <select class="form-control form-select" name="sex">
+                                <option selected>sex</option>
+                                <option value="M">M</option>
+                                <option value="F">F</option>
+                            </select>
+                            <select class="form-control form-select" name="on_thyroxine">
+                                <option selected>on_thyroxine</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="query_on_thyroxine">
+                                <option selected>query_on_thyroxine</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="on_antithyroid_meds">
+                                <option selected>on_antithyroid_meds</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="sick">
+                                <option selected>sick</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="pregnent">
+                                <option selected>pregnent</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="thyroid_surgery">
+                                <option selected>thyroid_surgery</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="I131_treatment">
+                                <option selected>I131_treatment</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="query_hypothyroid">
+                                <option selected>query_hypothyroid</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="query_hyperthyroid">
+                                <option selected>query_hyperthyroid</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="lithium">
+                                <option selected>lithium</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="goitre">
+                                <option selected>goitre</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="tumor">
+                                <option selected>tumor</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="hypopituitary">
+                                <option selected>hypopituitary</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <select class="form-control form-select" name="psych">
+                                <option selected>psych</option>
+                                <option value="t">t</option>
+                                <option value="f">f</option>
+                            </select>
+                            <textarea class="form-control" name="TSH" rows="1"
+                                placeholder="TSH: should be between 0.005 and 530.0"></textarea>
+                            <textarea class="form-control" name="T3" rows="1"
+                                placeholder="T3: should be betweeen 0.05 and 18.0"></textarea>
+                            <textarea class="form-control" name="TT4" rows="1"
+                                placeholder="TT4: should be between 2.0 and 600.0"></textarea>
+                            <textarea class="form-control" name="T4U" rows="1"
+                                placeholder="T4U: should be between 0.17 and 2.33"></textarea>
+                            <textarea class="form-control" name="FTI" rows="1"
+                                placeholder="FTI: should be between 1.4 and 881.0"></textarea>
+                            <textarea class="form-control" name="TBG" rows="1"
+                                placeholder="TBG: should be between 0.1 and 200.0"></textarea>
+                            <select class="form-control form-select" name="referral_source">
+                                <option selected>referral_source</option>
+                                <option value="SVI">SVI</option>
+                                <option value="SVHC">SVHC</option>
+                                <option value="STMW">STMW</option>
+                                <option value="SVHD">SVHD</option>
+                                <option value="WEST">WEST</option>
+                                <option value="other">other</option>
+                            </select>
                         </div>
 
                         <!-- Select output language here. -->
