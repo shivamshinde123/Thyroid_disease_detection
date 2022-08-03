@@ -121,7 +121,6 @@ def model_training(config_path):
     f1_scr = f1_score(test_y, xgbc.predict(test_X),average='weighted')
 
     ## 7. Saving the calculated metrics into a json file in the reports folder
-
     with open('reports/metrics.json','w') as json_file:
         balanced_accuracy = dict()
         balanced_accuracy['balanced_accuracy_score'] = balanced_accuracy_scr
