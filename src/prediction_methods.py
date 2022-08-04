@@ -52,7 +52,7 @@ def form_response(dict_request):
 
         response = Predict(transformed_data)
         return response
-    
+        
     except ValidationError as e:
         print(f"Validation error: {str(e)}")
         raise e
