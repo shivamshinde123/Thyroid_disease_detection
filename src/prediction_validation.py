@@ -21,19 +21,13 @@ class inp_dict_validator(BaseModel):
     tumor: Optional[str]
     hypopituitary: Optional[str]
     psych: Optional[str]
-    # TSH_measured: Optional[str]
     TSH: Optional[confloat(ge=0.005, le=530.0)] 
-    # T3_measured: Optional[str]
     T3: Optional[confloat(ge=0.05,le=18.0)] 
-    # TT4_measured: Optional[str]
     TT4: Optional[confloat(ge=2.0, le=600.0)] 
-    # T4U_measured: Optional[str]
     T4U: Optional[confloat(ge=0.17, le=2.33)] 
-    # FTI_measured: Optional[str]
     FTI: Optional[confloat(ge=1.4, le=881.0)] 
-    # TBG_measured: Optional[str]
     TBG: Optional[confloat(ge=0.1, le=200.0)] 
-    # referral_source: Optional[str]
+    referral_source: Optional[str]
 
 
 

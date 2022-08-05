@@ -70,8 +70,6 @@ def model_training(config_path):
     ## 2. Creating numerical pipeline
 
     num_pipe = Pipeline([
-        
-        # ('num_imputer',KNNImputer(n_neighbors=3, weights="uniform"))
         ('num_imputer',SimpleImputer(missing_values=np.nan, strategy='most_frequent',add_indicator=False))
 
     ])

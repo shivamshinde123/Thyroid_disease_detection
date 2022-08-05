@@ -30,15 +30,12 @@ def Predict(data):
 def form_response(dict_request):
 
     try:
-        # since we will get the numerial values in the form of strings from
-        # the html form, we first need to convert their data type from string to float
-        for feature in ['age','TSH','T3','TT4','T4U','FTI','TBG']:
-            dict_request[feature] = float(dict_request[feature])
+        validated_inputs = inp_dict_validator(**dict_request)
+        input_dict = validated_inputs.dict()
 
-        inp_dict_validator(**dict_request)
-
-        data = dict_request.values()
+        data = input_dict.values()
         data = np.array(list(data))
+        print(data)
 
         config = read_params(config_path)
         preprocess_pipe_foldername = config['preprocess']['preprocess_pipe_foldername']
