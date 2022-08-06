@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Thyroid Disease Detection Feature Info
+{% endblock title %}
+
+
+{% block custom_css %}
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/info.css') }}">
+{% endblock custom_css %}
+
+
+{% block body %}
+<!-- nav bar -->
+
+<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #a4b0be;">
+    <a class="navbar-brand" href="/">ThyroidDiseaseDetection</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/shivamshinde123/Thyroid_disease_detection">source code</a>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('info')}}">metadata</a>
+            
+        </ul>
+    </div>
+</nav>
+<div><br>
+    <div class="container-fluid">
+        <pre><code>    
+            <h2>Feature Info</h2>
+
+            age                     age of the patient (int)
+            sex                     sex patient identifies (str)
+            on_thyroxine -          whether patient is on thyroxine (bool)
+            query on thyroxine -    whether patient is on thyroxine (bool)
+            on antithyroid meds -   whether patient is on antithyroid meds (bool)
+            sick -                  whether patient is sick (bool)
+            pregnant -              whether patient is pregnant (bool)
+            thyroid_surgery -       whether patient has undergone thyroid surgery (bool)
+            I131_treatment -        whether patient is undergoing I131 treatment (bool)
+            query_hypothyroid -     whether patient believes they have hypothyroid (bool)
+            query_hyperthyroid -    whether patient believes they have hyperthyroid(bool)
+            lithium -               whether patient lithium (bool)
+            goitre -                whether patient has goitre (bool)
+            tumor -                 whether patient has tumor (bool)
+            hypopituitary -         whether patient hyperpituitary gland (float)
+            psych -                 whether patient psych (bool)
+            TSH -                   TSH level in blood from lab work (float)
+            T3 -                    T3 level in blood from lab work (float)
+            TT4 -                   TT4 level in blood from lab work (float)
+            T4U -                   T4U level in blood from lab work (float)
+            FTI -                   FTI level in blood from lab work (float)
+            TBG -                   TBG level in blood from lab work (float)
+            referral_source -       Referal Source (str)
+            target -                hyperthyroidism medical diagnosis (str)
+
+            <h2>Target Metadata</h2>
+
+            The diagnosis consists of a string of letters indicating diagnosed conditions.
+            A diagnosis "-" indicates no condition requiring comment.  A diagnosis of the
+            form "X|Y" is interpreted as "consistent with X, but more likely Y".  The
+            conditions are divided into groups where each group corresponds to a class of
+            comments.
+        
+            Letter  Diagnosis
+            ------  ---------
+        
+            hyperthyroid conditions:
+        
+            A   hyperthyroid
+            B   T3 toxic
+            C   toxic goitre
+            D   secondary toxic
+        
+            hypothyroid conditions:
+        
+            E   hypothyroid
+            F   primary hypothyroid
+            G   compensated hypothyroid
+            H   secondary hypothyroid
+        
+            binding protein:
+        
+            I   increased binding protein
+            J   decreased binding protein
+        
+            general health:
+        
+            K   concurrent non-thyroidal illness
+        
+            replacement therapy:
+        
+            L   consistent with replacement therapy
+            M   underreplaced
+            N   overreplaced
+        
+            antithyroid treatment:
+        
+            O   antithyroid drugs
+            P   I131 treatment
+            Q   surgery
+        
+            miscellaneous:
+        
+            R   discordant assay results
+            S   elevated TBG
+            T   elevated thyroid hormones
+        </code></pre>
+    </div>
+    {% endblock body %}
+
+    {% block custom_js %}
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='script/index.js') }}"></script>
+    {% endblock custom_js %}

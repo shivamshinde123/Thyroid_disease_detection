@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request
 import os
 from src.prediction_methods import form_response
@@ -15,7 +16,9 @@ def index():
         try:
             if request.form:
                 data = request.form
+                print(data)
                 data = dict(data)
+                print(data)
                 prediction = form_response(data)
                 return render_template('index.html',prediction=prediction)
         except Exception as e:
@@ -24,6 +27,10 @@ def index():
 
     else:
         return render_template('index.html')
+
+@app.route('/metadata',methods=['POST','GET'])
+def info():
+    return render_template('info.html')
 
 
 if __name__ == '__main__':

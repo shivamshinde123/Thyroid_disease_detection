@@ -44,7 +44,6 @@ def model_training(config_path):
     all_columns = df.columns.values
     all_columns = list(all_columns)
     all_columns = all_columns[:-1]
-    print(all_columns)
 
     X = df.drop('target',axis=1)
     y = df['target']
@@ -53,6 +52,9 @@ def model_training(config_path):
     test_size = config['General']['test_size']
 
     train_X, test_X, train_y, test_y = train_test_split(X, y, random_state=random_state, test_size=test_size)
+
+    train_X = pd.DataFrame(train_X, columns=all_columns)
+    test_X = pd.DataFrame(test_X, columns=all_columns)
 
     ## finding the names of numerical and categorical columns
     cat_cols = [feature for feature in train_X.columns if train_X[feature].dtypes == 'O']

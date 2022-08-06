@@ -1,11 +1,11 @@
 
 from typing import Optional
-from pydantic import BaseModel, confloat, validator
+from pydantic import BaseModel, confloat, validator, conint
 
 
 class inp_dict_validator(BaseModel):
 
-    age: Optional[confloat(gt=0, le=100)]
+    age: Optional[conint(gt=0, le=100)]
     sex: Optional[str]
     on_thyroxine: Optional[str]
     query_on_thyroxine: Optional[str]

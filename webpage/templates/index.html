@@ -14,7 +14,7 @@ Thyroid Disease Detection
 {% block body %}
 <!-- nav bar -->
 
-<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #d9eee1;">
+<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #a4b0be;">
     <a class="navbar-brand" href="/">ThyroidDiseaseDetection</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +27,9 @@ Thyroid Disease Detection
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://github.com/shivamshinde123/Thyroid_disease_detection">source code</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('info')}}">metadata</a>
             </li>
         </ul>
     </div>
@@ -53,78 +56,78 @@ Thyroid Disease Detection
                                 placeholder="age: should be between 0 and 100"></textarea>
                             <select class="form-control form-select" name="sex">
                                 <option selected>sex</option>
-                                <option value="M">M</option>
-                                <option value="F">F</option>
+                                <option value="M">Sex: Male</option>
+                                <option value="F">Sex: Female</option>
                             </select>
                             <select class="form-control form-select" name="on_thyroxine">
                                 <option selected>on_thyroxine</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">on_thyroxine: True</option>
+                                <option value="f">on_thyroxine: False</option>
                             </select>
                             <select class="form-control form-select" name="query_on_thyroxine">
                                 <option selected>query_on_thyroxine</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">query_on_thyroxine: True</option>
+                                <option value="f">query_on_thyroxine: False</option>
                             </select>
                             <select class="form-control form-select" name="on_antithyroid_meds">
                                 <option selected>on_antithyroid_meds</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">on_antithyroid_meds: True</option>
+                                <option value="f">on_antithyroid_meds: False</option>
                             </select>
                             <select class="form-control form-select" name="sick">
                                 <option selected>sick</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">sick: True</option>
+                                <option value="f">sick: False</option>
                             </select>
-                            <select class="form-control form-select" name="pregnent">
-                                <option selected>pregnent</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                            <select class="form-control form-select" name="pregnant">
+                                <option selected>pregnant</option>
+                                <option value="t">pregnant: True</option>
+                                <option value="f">pregnant: False</option>
                             </select>
                             <select class="form-control form-select" name="thyroid_surgery">
                                 <option selected>thyroid_surgery</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">thyroid_surgery: True</option>
+                                <option value="f">thyroid_surgery: False</option>
                             </select>
                             <select class="form-control form-select" name="I131_treatment">
                                 <option selected>I131_treatment</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">I131_treatment: True</option>
+                                <option value="f">I131_treatment: False</option>
                             </select>
                             <select class="form-control form-select" name="query_hypothyroid">
                                 <option selected>query_hypothyroid</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">query_hypothyroid: True</option>
+                                <option value="f">query_hypothyroid: False</option>
                             </select>
                             <select class="form-control form-select" name="query_hyperthyroid">
                                 <option selected>query_hyperthyroid</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">query_hyperthyroid: True</option>
+                                <option value="f">query_hyperthyroid: False</option>
                             </select>
                             <select class="form-control form-select" name="lithium">
                                 <option selected>lithium</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">lithium: True</option>
+                                <option value="f">lithium: False</option>
                             </select>
                             <select class="form-control form-select" name="goitre">
                                 <option selected>goitre</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">goitre: True</option>
+                                <option value="f">goitre: False</option>
                             </select>
                             <select class="form-control form-select" name="tumor">
                                 <option selected>tumor</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">tumor: True</option>
+                                <option value="f">tumor: False</option>
                             </select>
                             <select class="form-control form-select" name="hypopituitary">
                                 <option selected>hypopituitary</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">hypopituitary: True</option>
+                                <option value="f">hypopituitary: False</option>
                             </select>
                             <select class="form-control form-select" name="psych">
                                 <option selected>psych</option>
-                                <option value="t">t</option>
-                                <option value="f">f</option>
+                                <option value="t">psych: True</option>
+                                <option value="f">psych: False</option>
                             </select>
                             <textarea class="form-control" name="TSH" rows="1"
                                 placeholder="TSH: should be between 0.005 and 530.0"></textarea>
@@ -140,15 +143,14 @@ Thyroid Disease Detection
                                 placeholder="TBG: should be between 0.1 and 200.0"></textarea>
                             <select class="form-control form-select" name="referral_source">
                                 <option selected>referral_source</option>
-                                <option value="SVI">SVI</option>
-                                <option value="SVHC">SVHC</option>
-                                <option value="STMW">STMW</option>
-                                <option value="SVHD">SVHD</option>
-                                <option value="WEST">WEST</option>
-                                <option value="other">other</option>
+                                <option value="SVI">referral_source: SVI</option>
+                                <option value="SVHC">referral_source: SVHC</option>
+                                <option value="STMW">referral_source: STMW</option>
+                                <option value="SVHD">referral_source: SVHD</option>
+                                <option value="WEST">referral_source: WEST</option>
+                                <option value="other">referral_source: other</option>
                             </select>
                         </div>
-
                         <!-- Select output language here. -->
                         <div class="form-group">
                         </div>
@@ -163,7 +165,7 @@ Thyroid Disease Detection
                             <label for="translation-result">
 
                                 <blockquote class="blockquote">
-                                    <p class="mb-2">Prediction:</p>
+                                    <p class="mb-2">Thyroid Condition:</p>
                                 </blockquote>
 
                             </label>
@@ -173,13 +175,13 @@ Thyroid Disease Detection
                 </div>
             </div>
         </div>
-        
-            
-        </div>
 
-        {% endblock body %}
 
-        {% block custom_js %}
-        <!-- Custom JS -->
-        <script src="{{ url_for('static', filename='script/index.js') }}"></script>
-        {% endblock custom_js %}
+    </div>
+
+    {% endblock body %}
+
+    {% block custom_js %}
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='script/index.js') }}"></script>
+    {% endblock custom_js %}
