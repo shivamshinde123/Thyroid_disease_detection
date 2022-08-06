@@ -13,16 +13,20 @@ config_path = 'params.yaml'
 
 def Predict(data):
     try:
+        # getting the path where the trained model is stored
         config = read_params(config_path)
         model_foldername = config['model']['model_foldername']
         model_name = config['model']['model_name']
 
         model_path = os.path.join(model_foldername,model_name)
 
+        # loading the trained model
         model = joblib.load(model_path)
 
+        # making the predictions using the preprocessed validated data and the trained model
         prediction = model.predict(data)
 
+        # making the predictions understandable for the user
         thyroid_condition_dict = dict()
         thyroid_condition_dict['A'] = 'hyperthyroid'
         thyroid_condition_dict['B'] = 'T3 toxic'
@@ -50,6 +54,7 @@ def Predict(data):
 
         prediction = thyroid_condition_dict[prediction[0]]
 
+        # returning the predictions
         return prediction
     
     except Exception as e:
@@ -59,24 +64,29 @@ def Predict(data):
 def form_response(dict_request):
 
     try:
+        # validating the input values entered by the user in the html form using the pydantic library
         validated_inputs = inp_dict_validator(**dict_request)
+
+        # getting the validated dictionary
         input_dict = validated_inputs.dict()
-        print(input_dict)
 
+        # creating a dataframe with only one row using the validated dictionary
         data = pd.DataFrame(input_dict,index=[0])
-        print(data)
 
+        # getting the path to the stored preprocess pipeline
         config = read_params(config_path)
         preprocess_pipe_foldername = config['preprocess']['preprocess_pipe_foldername']
         preprocess_pipe_filename = config['preprocess']['preprocess_pipe_filename']
         preprocess_pipe_path = os.path.join(preprocess_pipe_foldername, preprocess_pipe_filename)
 
+        # loading the preprocess pipeline 
         with open(preprocess_pipe_path,'rb') as preprocess_file:
             preprocess_pipe = pickle.load(preprocess_file)
         
+        # transforming the validated data using the loaded preprocess pipeline
         transformed_data = preprocess_pipe.transform(data)
-        print(transformed_data)
 
+        # making the prediction using the transformed data and the trained model
         response = Predict(transformed_data)
         return response
         

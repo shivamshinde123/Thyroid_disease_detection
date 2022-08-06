@@ -5,6 +5,7 @@ from pydantic import BaseModel, confloat, validator, conint
 
 class inp_dict_validator(BaseModel):
 
+    # validating the datatypes of the input features
     age: Optional[conint(gt=0, le=100)]
     sex: Optional[str]
     on_thyroxine: Optional[str]
@@ -30,25 +31,13 @@ class inp_dict_validator(BaseModel):
     referral_source: Optional[str]
 
 
-
-    # @validator('sex')
-    # def sex_type_validator(cls,v):
-    #     if v not in ['M','F']:
-    #         raise ValueError('Sex should be either M or F')
-    
-    # @validator('on_thyroxine','query_on_thyroxine','on_antithyroid_meds','sick','pregnant','thyroid_surgery','I131_treatment','query_hypothyroid','query_hyperthyroid',
-    # 'lithium','goitre','tumor','hypopituitary','psych','TSH_measured','T3_measured','TT4_measured','T4U_measured','FTI_measured','TBG_measured')
-    # def true_false_validator(cls,v):
-    #     if v not in ['t','f']:
-    #         raise ValueError('The value should be either t or f')
-    #     return v
-
-    # @validator('referral_source')
-    # def referral_source_validator(cls,v):
-    #     if v not in ['other', 'SVI', 'SVHC', 'STMW', 'SVHD', 'WEST']:
-    #         raise ValueError('referral_source value should be either of the following: other, SVI, SVHC, STMW, SVHD, WEST')
-    #     return v
-
+    # validating that the user is not entering the sex feature as 'Male' and the pregnant feature as 'True'
+    @validator('pregnant')
+    def pregnant_feature_validation(cls,field_value, values):
+        sex = values['sex']
+        if sex == 'M':
+            if field_value == 't':
+                raise ValueError('You cannot select Male feature as M as pregnant feature as True at the same time.')
 
 
     

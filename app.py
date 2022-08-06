@@ -15,10 +15,13 @@ def index():
     if request.method == "POST":
         try:
             if request.form:
+                # getting the data which was entered by the user using the html form
                 data = request.form
-                print(data)
+
+                # converting the data from the html page into the dictionary format
                 data = dict(data)
-                print(data)
+
+                ## providing the dictionary format data to the form_response method
                 prediction = form_response(data)
                 return render_template('index.html',prediction=prediction)
         except Exception as e:
