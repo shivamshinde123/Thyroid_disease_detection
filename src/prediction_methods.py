@@ -12,6 +12,15 @@ config_path = 'params.yaml'
 
 
 def Predict(data):
+
+    """
+    This method is used to laod the trained machine learning model and then make the prediction using it and the provided data
+
+    Args:
+        data: The data for which the prediction needs to be made
+
+    Returns: Prediction for the provided data
+    """
     try:
         # getting the path where the trained model is stored
         config = read_params(config_path)
@@ -50,8 +59,6 @@ def Predict(data):
         thyroid_condition_dict['T'] = 'elevated thyroid hormones'
         thyroid_condition_dict['Others'] = 'no condition requiring comment'
 
-        print(thyroid_condition_dict)
-
         prediction = thyroid_condition_dict[prediction[0]]
 
         # returning the predictions
@@ -62,6 +69,16 @@ def Predict(data):
         raise e
 
 def form_response(dict_request):
+
+    """
+    This method is used to validate the data obtained from the user and then preprocess the data using the saved trained preprocess pipeline and 
+    finally make the prediction using the trained model.
+
+    Args:
+        dict_request: Dictionary containing the inputs provided by the user
+
+    Returns: Response to be displayed to the user
+    """
 
     try:
         # validating the input values entered by the user in the html form using the pydantic library
