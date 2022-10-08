@@ -84,6 +84,7 @@ grandalf==0.6
 graphviz==0.20.1
 greenlet==1.1.2
 grpcio==1.46.3
+gunicorn==20.1.0
 h5py==3.7.0
 httplib2==0.20.4
 idna==3.3
@@ -210,7 +211,7 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
 SQLAlchemy==1.4.34
 sqlparse==0.4.2
--e git+ssh://git@github.com/shivamshinde123/Thyroid_disease_detection.git@fe484a25a8d789da767830c839dab35ac745b675#egg=src
+-e git+ssh://git@github.com/shivamshinde123/Thyroid_disease_detection.git@5b1264b0becef4e1ed8cfc299915097fe0c8fa29#egg=src
 stack-data==0.2.0
 statsmodels==0.13.2
 tabulate==0.8.9
