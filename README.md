@@ -1,5 +1,11 @@
 
 #   Thyroid Disease Detection
+![](https://img.shields.io/github/last-commit/shivamshinde123/Thyroid_disease_detection)
+![](https://img.shields.io/github/languages/count/shivamshinde123/Thyroid_disease_detection)
+![](https://img.shields.io/github/languages/top/shivamshinde123/Thyroid_disease_detection)
+![](https://img.shields.io/github/repo-size/shivamshinde123/Thyroid_disease_detection)
+![](https://img.shields.io/github/directory-file-count/shivamshinde123/Thyroid_disease_detection)
+![](https://img.shields.io/github/license/shivamshinde123/Thyroid_disease_detection)
 
 The aim of the project is to detect whether the patient is suffering from thyroid or not.
 
