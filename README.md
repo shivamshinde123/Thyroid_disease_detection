@@ -25,15 +25,16 @@ disease or not.
 ![](https://img.shields.io/badge/-HTML-%23E34F26)
 ![](https://img.shields.io/badge/-CSS-%231572B6)
 ![](https://img.shields.io/badge/-JavaScript-%23F7DF1E)
+![](https://img.shields.io/badge/-Git-%23F05032)
+![](https://img.shields.io/badge/-DVC-%2313ADC7)
 
 # Python Libraries Used
+![](https://img.shields.io/badge/-Cookiecutter-%23D4AA00)
 ![](https://img.shields.io/badge/-NumPy-%23013243)
 ![](https://img.shields.io/badge/-Pandas-%23150458)
-![](https://img.shields.io/badge/-DVC-%2313ADC7)
 ![](https://img.shields.io/badge/-Pydantic-black)
 ![](https://img.shields.io/badge/-Flask-%23000000)
 ![](https://img.shields.io/badge/-Scikit--Learn-%23F7931E)
-
 
 ## Screenshots
 
