@@ -87,7 +87,7 @@ Activate the created conda environment
 Install dependencies
 
 ```bash
-  pip install requirements.txt
+  pip install -r requirements.txt
 ```
 
 Start the server
